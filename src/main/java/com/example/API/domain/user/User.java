@@ -1,41 +1,43 @@
 package com.example.API.domain.user;
 
-// 로그인 회원 정보
-public class User {
+import com.example.API.domain.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+
+@Entity
+@Getter
+@Builder
+@DynamicInsert
+@Table(name = "users")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public class User extends BaseEntity {
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
+
+    @Column(name = "user_name", length = 20)
+    private String username;
+
+    @Column(length = 64, nullable = false)
     private String password;
-    private String name;
-    private int remainVaction;
 
-    public Long getId() {
-        return id;
-    }
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "available_vac_days", columnDefinition ="Default Value: 15.0")
+    private Double availableVacDays;
 
-    public int getRemainVaction() {
-        return remainVaction;
-    }
+    @Column(name = "requested_vac_days", columnDefinition ="Default Value: 0.0")
+    private Double requestedVacDays;
 
-    public void setRemainVaction(int remainVaction) {
-        this.remainVaction = remainVaction;
-    }
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Vacation_x> vacations;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void update(Double availableVacDays, Double requestedVacDays) {
+        this.availableVacDays = availableVacDays;
+        this.requestedVacDays = requestedVacDays;
     }
 }
+

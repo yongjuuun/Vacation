@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: vacation
+  profiles:
+    default: dev
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/vacation?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  h2:
+    console:
+      enabled: true
+      path: /kakaostyle
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+server:
+  port: 9100
+
+vacation:
+  default:
+    annual_days: 15.0
+    reset_date: 01-01

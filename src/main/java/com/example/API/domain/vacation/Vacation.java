@@ -1,54 +1,50 @@
 package com.example.API.domain.vacation;
 
-import java.time.LocalDate;
+import com.example.API.domain.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
-// 휴가 신청 정보
-public class Vacation {
+@Entity
+@Getter
+@Builder
+@DynamicInsert
+@Table(name = "vacation")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+
+public class Vacation extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "vacation_id")
     private Long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private int totalDays;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "vacation_type", length = 20)    // 연차 반차 반반차?
+    private String vacationType;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "status", length = 10)       // 연차 시작? 아직?
+    private String status;
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+    @Column(name = "days_used", nullable = false) // 사용된 날짜
+    private Double daysUsed;
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+    @Column(name = "start_date", nullable = false) // 시작 날짜
+    private Double startDate;
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+    @Column(name = "end_date", nullable = false) // 종료 날짜
+    private Double endDate;
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+    @Column(name = "user_id")
+    private Long userId;
 
-    public int getTotalDays() {
-        return totalDays;
-    }
-
-    public void setTotalDays(int totalDays) {
-        this.totalDays = totalDays;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
+    @Column(length = 500, nullable = true)
     private String comment;
 
+//    private Double createdAt;
+
+//    private Double updatedAt;
+
+    // PRIMARY KEY (vacation_id)
+
+    // CONSTRAINT vacations_ibfk_1 FOREIGN KEY (user_id) REFERENCES
 }
