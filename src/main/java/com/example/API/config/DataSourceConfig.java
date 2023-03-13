@@ -33,17 +33,17 @@ public class DataSourceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.example.API.domain");
-        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        em.setJpaProperties(additionalProperties());
+        em.setPackagesToScan("com.example.API.domain"); // entity data가 어디에 있는지
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());    // jap를 어댑팅 시켜주는 곳
+        em.setJpaProperties(additionalProperties());    // 설정값들 지정
         return em;
     }
 
     private Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect"); // sql8 사용
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");     // 자동으로 데이터베이스 업데이트
+        properties.setProperty("hibernate.show_sql", "true");       // sql 보여주는지
         return properties;
     }
 

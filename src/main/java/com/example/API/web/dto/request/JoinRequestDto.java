@@ -1,4 +1,4 @@
-package com.example.API.web.dto;
+package com.example.API.web.dto.request;
 
 import com.example.API.domain.user.Role;
 import com.example.API.domain.user.User;

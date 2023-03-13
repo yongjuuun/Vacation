@@ -17,7 +17,7 @@ public class Vacation extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vacation_id")
-    private Long id;
+    private Long vacationId;
 
     @Column(name = "vacation_type", length = 20)    // 연차 반차 반반차?
     private String vacationType;

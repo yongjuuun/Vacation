@@ -3,7 +3,7 @@ package com.example.API.service.user;
 import com.example.API.domain.user.User;
 import com.example.API.exception.UserNotFoundException;
 import com.example.API.repository.UserRepository;
-import com.example.API.web.dto.JoinRequestDto;
+import com.example.API.web.dto.request.JoinRequestDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;

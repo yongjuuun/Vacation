@@ -2,7 +2,7 @@ package com.example.API.web.user;
 
 import com.example.API.domain.user.User;
 import com.example.API.service.user.UserService;
-import com.example.API.web.dto.UserResponseDto;
+import com.example.API.web.dto.response.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;

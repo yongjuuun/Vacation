@@ -1,4 +1,4 @@
-package com.example.API.web.dto;
+package com.example.API.web.dto.response;
 
 import com.example.API.domain.user.Role;
 import lombok.Data;
