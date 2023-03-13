@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
+    <title>Vacation Request System</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<h1>Vacation Request System</h1>
+<form th:action="@{/vacation/request}" method="GET">
+    <button type="submit" >Vacation Request</button>
+</form>
+<hr />
+<h2>User List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>| Index | </th>
+        <th>Name | </th>
+        <th>Available Vacation days | </th>
+        <th>Used vacation days | </th>
+        <th>Vacation | </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user , index: ${users}">
+        <td th:text="${index.index}">#</td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.availableVacDays}"></td>
+        <td th:text="${user.requestedVacDays}"></td>
+        <form th:action="@{/vacation/detail/{id}(id = ${user.id})}" method="GET">
+            <td><button>DETAIL</button></td>
+        </form>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

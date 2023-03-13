@@ -14,9 +14,24 @@
 //public class VacationServiceImpl implements VacationService{
 //    private final VacationRepository vacationRepository;
 //
+//    // 모든 휴가 조회
 //    public List<Vacation> findAllVacation() {
-//        return VacationRepository.
+//        return vacationRepository.findAll();
 //    }
+//
+//
+//    // requestVacation - 휴가 신청
+//
+//    // cancelVacation - 휴가 취소
+//
+//    // daysVacation - 휴가일 계산(시작일, 종료일)
+//
+//    // findVacationById - 사용자의 휴가를 조회
+//
+//    // 휴가 승인, 반려, 진행중
+//
+//
+//
 //
 //    // 남은 휴가 계산
 //    public Vacation getRemainDays(?) {
