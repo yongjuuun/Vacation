@@ -19,19 +19,19 @@ public class Vacation extends BaseEntity {
     @Column(name = "vacation_id")
     private Long vacationId;
 
-    @Column(name = "vacation_type", length = 20)    // 연차 반차 반반차?
+    @Column(name = "vacation_type", length = 20)
     private String vacationType;
 
-    @Column(name = "status", length = 10)       // 연차 시작? 아직?
+    @Column(name = "status", length = 10)
     private String status;
 
-    @Column(name = "days_used", nullable = false) // 사용된 날짜
+    @Column(name = "days_used", nullable = false)
     private Double daysUsed;
 
-    @Column(name = "start_date", nullable = false) // 시작 날짜
+    @Column(name = "start_date", nullable = false)
     private Double startDate;
 
-    @Column(name = "end_date", nullable = false) // 종료 날짜
+    @Column(name = "end_date", nullable = false)
     private Double endDate;
 
     @Column(name = "user_id")
