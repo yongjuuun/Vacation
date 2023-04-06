@@ -1,50 +1,56 @@
 package com.example.API.domain.vacation;
 
 import com.example.API.domain.BaseEntity;
+import com.example.API.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.DynamicInsert;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Builder
-@DynamicInsert
-@Table(name = "vacation")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "vacations")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Vacation extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "vacation_id")
-    private Long vacationId;
+    private Long id;
 
-    @Column(name = "vacation_type", length = 20)
-    private String vacationType;
+    @Column(name = "vacation_type")
+    @Enumerated(EnumType.STRING)
+    private VacationType vacationType;
 
-    @Column(name = "status", length = 10)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private VacationStatus status;
 
-    @Column(name = "days_used", nullable = false)
+    @Column(name = "days_used", length = 3, nullable = false)
     private Double daysUsed;
 
-    @Column(name = "start_date", nullable = false)
-    private Double startDate;
+    @Column(name = "start_date")
+    private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
-    private Double endDate;
+    @Column(name = "end_date")
+    private LocalDate endDate;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(length = 500, nullable = true)
+    @Column(name = "available_vac_days", columnDefinition ="Default Value: 15.0")
+    private Double availableVacDays;
+
+    @Column(name = "requested_vac_days", columnDefinition ="Default Value: 0.0")
+    private Double requestedVacDays;
+
+    @Column(length = 500)
     private String comment;
 
-//    private Double createdAt;
-
-//    private Double updatedAt;
-
-    // PRIMARY KEY (vacation_id)
-
-    // CONSTRAINT vacations_ibfk_1 FOREIGN KEY (user_id) REFERENCES
+    public void update(VacationStatus status) {
+        this.status = status;
+        this.availableVacDays = availableVacDays;
+        this.requestedVacDays = requestedVacDays;
+    }
 }

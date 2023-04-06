@@ -3,7 +3,7 @@ package com.example.API.web.dto.response;
 import lombok.Data;
 
 @Data
-public class VacResponseDto {
+public class VacationResponseDto {
     private Long vacationId;
     private String vacationType;
     private String status;
