@@ -15,16 +15,11 @@ public class JoinRequestDto {
     private String password;
 
     private Role role;
-    private Double availableVacDays;
-
-    private Double requestedVacDays;
 
     public User toEntity() {
         return User.builder()
                 .username(this.username)
                 .password(this.password)
-                .availableVacDays(this.availableVacDays)
-                .requestedVacDays(this.requestedVacDays)
                 .build();
     }
 }

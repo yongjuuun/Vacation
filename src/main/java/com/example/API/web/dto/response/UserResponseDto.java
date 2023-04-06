@@ -9,6 +9,4 @@ public class UserResponseDto {
     private Long id;
     private String username;
     private Role role;
-    private Double availableVacDays;
-    private Double requestedVacDays;
 }

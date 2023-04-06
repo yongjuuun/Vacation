@@ -32,8 +32,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                     .username(username)
                     .password(passwordEncoder.encode(password))
                     .role(Role.USER)
-                    .availableVacDays(15.0)
-                    .requestedVacDays(0.0)
+//                    .availableVacDays(15.0)
+//                    .requestedVacDays(0.0)
                     .build());
         }
 

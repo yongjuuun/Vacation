@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsByUsername(username);
     }
 
-
     public List<User> findAll() {
         return userRepository.findAll();
     }
