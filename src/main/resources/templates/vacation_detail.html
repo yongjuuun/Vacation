@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
+    <title>Vacation Request System</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+<h1>Vacation Request System</h1>
+<form th:action="@{/}" method="GET">
+    <button type="submit" >HOME</button>
+</form>
+<hr />
+<h2>Vacation List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>| Index | </th>
+        <th>Vacation Type | </th>
+        <th>Vacation Status | </th>
+        <th>Vacation Start Date | </th>
+        <th>Vacation End Date | </th>
+        <th>Comment | </th>
+        <th>Vacation Cancellation | </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vacation , index: ${vacations}">
+        <td th:text="${vacation.id}">#</td>
+        <td th:text="${vacation.vacationType}"></td>
+        <td th:text="${vacation.status}"></td>
+        <td th:text="${vacation.startDate}"></td>
+        <td th:text="${vacation.endDate}"></td>
+        <td th:text="${vacation.comment}"></td>
+        <td>
+            <button th:onclick="'javascript:cancel(' + ${vacation.id} + ')'">
+                CANCEL
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script th:inline="javascript">
+    function cancel(id) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', `/vacation/${id}`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert('Vacation cancel submitted successfully!');
+                window.location.reload();
+            } else {
+                alert('Error submitting vacation cancel.');
+            }
+        };
+        xhr.send(JSON.stringify({ id }));
+    }
+</script>
 </body>
 </html>

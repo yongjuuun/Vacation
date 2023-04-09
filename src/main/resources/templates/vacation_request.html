@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Vacation Request System</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<h1>Vacation Request System</h1>
+<form th:action="@{/}" method="GET">
+    <button type="submit" >HOME</button>
+</form>
+<hr />
+<h2>Request Form</h2>
+<h3 th:text="'Remain Vacation Counts: ' + ${count}"></h3>
+<form id="request-form">
+    <label for="vacation-type">Vacation Type:</label>
+    <select id="vacation-type" name="vacation-type">
+        <option value="ANNUAL_DAY">DAY(ANNUAL)</option>
+        <option value="ANNUAL_HALF_DAY">HALF DAY(ANNUAL)</option>
+        <option value="ANNUAL_QUARTER_DAY">QUARTER DAY(ANNUAL)</option>
+    </select><br />
 
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" name="start-date"><br />
+
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" name="end-date"><br />
+
+    <label for="comment">Comment:</label>
+    <input type="text" id="comment" name="comment"><br />
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    const requestForm = document.getElementById('request-form');
+
+    requestForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const vacationType = document.getElementById('vacation-type').value;
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+        const comment = document.getElementById('comment').value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/vacation/request');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert('Vacation request submitted successfully!');
+                window.location.reload();
+            } else {
+                alert('Error submitting vacation request.');
+            }
+        };
+        xhr.send(JSON.stringify({ vacationType, startDate, endDate, comment }));
+
+        requestFormContainer.style.display = 'none';
+    });
+</script>
 </body>
 </html>
