@@ -33,11 +33,10 @@ public class VacationConfig {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd");
         LocalDateTime now = LocalDateTime.now();
 
-        // 개선 ???
         if (dtf.format(now).equals(RESET_DATE)) {
             String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userService.findByUsername(currentUserName);
-            user.update(DEFAULT_VACATION, 0.0);
+//            user.update(DEFAULT_VACATION, 0.0);   수정
         }
     }
 

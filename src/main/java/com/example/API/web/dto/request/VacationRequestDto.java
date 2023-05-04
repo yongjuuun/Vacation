@@ -19,18 +19,35 @@ public class VacationRequestDto {
     private LocalDate endDate;
     private VacationType vacationType;
     private VacationStatus status;
+    //    private Double availableVacDays;
+//    private Double requestedVacDays;
     private String comment;
 
-    public Vacation toEntity(User user, Double days_used, VacationStatus status,
-                             LocalDate startDate, LocalDate endDate) {
+    public Vacation toEntity(User user, double day_used, VacationStatus status) {
         return Vacation.builder()
                 .startDate(startDate)
                 .endDate(endDate)
                 .vacationType(this.vacationType)
                 .comment(this.comment)
-                .daysUsed(days_used)
+                .daysUsed(day_used)
                 .status(status)
                 .user(user)
                 .build();
     }
+
+//    public Vacation toEntity(User user, Double days_used, VacationStatus status,
+//                             LocalDate startDate, LocalDate endDate)
+//    {
+//        return Vacation.builder()
+//                .startDate(startDate)
+//                .endDate(endDate)
+//                .vacationType(this.vacationType)
+//                .comment(this.comment)
+//                .daysUsed(days_used)
+//                .status(status)
+//                .user(user)
+////                .availableVacDays(this.availableVacDays)
+////                .requestedVacDays(this.requestedVacDays)
+//                .build();
+//    }
 }

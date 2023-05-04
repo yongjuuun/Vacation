@@ -39,18 +39,18 @@ public class Vacation extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "available_vac_days", columnDefinition ="Default Value: 15.0")
-    private Double availableVacDays;
-
-    @Column(name = "requested_vac_days", columnDefinition ="Default Value: 0.0")
-    private Double requestedVacDays;
+//    @Column(name = "available_vac_days", columnDefinition ="Default Value: 15.0")
+//    private Double availableVacDays;
+//
+//    @Column(name = "requested_vac_days", columnDefinition ="Default Value: 0.0")
+//    private Double requestedVacDays;
 
     @Column(length = 500)
     private String comment;
 
     public void update(VacationStatus status) {
         this.status = status;
-        this.availableVacDays = availableVacDays;
-        this.requestedVacDays = requestedVacDays;
+//        this.availableVacDays = availableVacDays;
+//        this.requestedVacDays = requestedVacDays;
     }
 }
