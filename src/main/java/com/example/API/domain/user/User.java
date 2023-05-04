@@ -32,5 +32,16 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Vacation> vacations;
+
+    @Column(name = "available_vac_days", columnDefinition = "Default Value : 15.0")
+    private Double availableVacDays;
+
+    @Column(name = "requested_vac_days", columnDefinition = "Default Value : 0.0")
+    private Double requestedVacDays;
+
+    public void update(Double availableVacDays, Double requestedVacDays) {
+        this.availableVacDays = availableVacDays;
+        this.requestedVacDays = requestedVacDays;
+    }
 }
 
