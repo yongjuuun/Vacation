@@ -36,7 +36,7 @@ public class VacationConfig {
         if (dtf.format(now).equals(RESET_DATE)) {
             String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userService.findByUsername(currentUserName);
-//            user.update(DEFAULT_VACATION, 0.0);   수정
+//            user.update(DEFAULT_VACATION, 0.0);
         }
     }
 
